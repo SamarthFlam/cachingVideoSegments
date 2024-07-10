@@ -1,0 +1,6 @@
+framework module Pods_cachingVideoTest {
+  umbrella header "Pods-cachingVideoTest-umbrella.h"
+
+  export *
+  module * { export * }
+}

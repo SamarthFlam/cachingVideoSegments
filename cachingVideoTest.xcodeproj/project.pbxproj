@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62C764D02C3C20FE00FD7B33 /* CachedHLSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C764CF2C3C20FE00FD7B33 /* CachedHLSClient.swift */; };
+		62C764D22C3C231C00FD7B33 /* CachingPlayerItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C764D12C3C231C00FD7B33 /* CachingPlayerItem.swift */; };
+		62C764D82C3D18DD00FD7B33 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C764D72C3D18DD00FD7B33 /* CacheManager.swift */; };
+		62C764DA2C3D198600FD7B33 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C764D92C3D198600FD7B33 /* Reachability.swift */; };
+		62C764DD2C3D20C300FD7B33 /* Pods_cachingVideoTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA16EA43B17EE2319736775 /* Pods_cachingVideoTest.framework */; };
+		62C764DE2C3D20C300FD7B33 /* Pods_cachingVideoTest.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9AA16EA43B17EE2319736775 /* Pods_cachingVideoTest.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		62C765012C3E6A5900FD7B33 /* HLSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C765002C3E6A5900FD7B33 /* HLSParser.swift */; };
 		62F58D4B2C3BC4E400E815D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F58D4A2C3BC4E400E815D0 /* AppDelegate.swift */; };
 		62F58D4D2C3BC4E400E815D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F58D4C2C3BC4E400E815D0 /* SceneDelegate.swift */; };
 		62F58D4F2C3BC4E400E815D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F58D4E2C3BC4E400E815D0 /* ViewController.swift */; };
@@ -15,7 +22,27 @@
 		62F58D572C3BC4E500E815D0 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 62F58D562C3BC4E500E815D0 /* Base */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		62C764DF2C3D20C300FD7B33 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				62C764DE2C3D20C300FD7B33 /* Pods_cachingVideoTest.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		287C77AF73CDEE55A4CB6C59 /* Pods-cachingVideoTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cachingVideoTest.release.xcconfig"; path = "Target Support Files/Pods-cachingVideoTest/Pods-cachingVideoTest.release.xcconfig"; sourceTree = "<group>"; };
+		62C764CF2C3C20FE00FD7B33 /* CachedHLSClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedHLSClient.swift; sourceTree = "<group>"; };
+		62C764D12C3C231C00FD7B33 /* CachingPlayerItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachingPlayerItem.swift; sourceTree = "<group>"; };
+		62C764D72C3D18DD00FD7B33 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
+		62C764D92C3D198600FD7B33 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		62C765002C3E6A5900FD7B33 /* HLSParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HLSParser.swift; sourceTree = "<group>"; };
 		62F58D472C3BC4E400E815D0 /* cachingVideoTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cachingVideoTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62F58D4A2C3BC4E400E815D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62F58D4C2C3BC4E400E815D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +51,8 @@
 		62F58D532C3BC4E500E815D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62F58D562C3BC4E500E815D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62F58D582C3BC4E500E815D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AA16EA43B17EE2319736775 /* Pods_cachingVideoTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cachingVideoTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF99C968376EC50CA125950E /* Pods-cachingVideoTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cachingVideoTest.debug.xcconfig"; path = "Target Support Files/Pods-cachingVideoTest/Pods-cachingVideoTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C764DD2C3D20C300FD7B33 /* Pods_cachingVideoTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +72,8 @@
 			children = (
 				62F58D492C3BC4E400E815D0 /* cachingVideoTest */,
 				62F58D482C3BC4E400E815D0 /* Products */,
+				B4ADFB9D201A407AFF1654CC /* Pods */,
+				EC0AFED4535D52BEB72A264B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,12 +91,34 @@
 				62F58D4A2C3BC4E400E815D0 /* AppDelegate.swift */,
 				62F58D4C2C3BC4E400E815D0 /* SceneDelegate.swift */,
 				62F58D4E2C3BC4E400E815D0 /* ViewController.swift */,
+				62C765002C3E6A5900FD7B33 /* HLSParser.swift */,
+				62C764D72C3D18DD00FD7B33 /* CacheManager.swift */,
+				62C764CF2C3C20FE00FD7B33 /* CachedHLSClient.swift */,
+				62C764D12C3C231C00FD7B33 /* CachingPlayerItem.swift */,
+				62C764D92C3D198600FD7B33 /* Reachability.swift */,
 				62F58D502C3BC4E400E815D0 /* Main.storyboard */,
 				62F58D532C3BC4E500E815D0 /* Assets.xcassets */,
 				62F58D552C3BC4E500E815D0 /* LaunchScreen.storyboard */,
 				62F58D582C3BC4E500E815D0 /* Info.plist */,
 			);
 			path = cachingVideoTest;
+			sourceTree = "<group>";
+		};
+		B4ADFB9D201A407AFF1654CC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF99C968376EC50CA125950E /* Pods-cachingVideoTest.debug.xcconfig */,
+				287C77AF73CDEE55A4CB6C59 /* Pods-cachingVideoTest.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		EC0AFED4535D52BEB72A264B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AA16EA43B17EE2319736775 /* Pods_cachingVideoTest.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +128,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62F58D5B2C3BC4E500E815D0 /* Build configuration list for PBXNativeTarget "cachingVideoTest" */;
 			buildPhases = (
+				266F3E6D1A31C5CEE30439C4 /* [CP] Check Pods Manifest.lock */,
 				62F58D432C3BC4E400E815D0 /* Sources */,
 				62F58D442C3BC4E400E815D0 /* Frameworks */,
 				62F58D452C3BC4E400E815D0 /* Resources */,
+				CE00A4247CC970DD2DF65946 /* [CP] Embed Pods Frameworks */,
+				62C764DF2C3D20C300FD7B33 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -133,14 +190,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		266F3E6D1A31C5CEE30439C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cachingVideoTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE00A4247CC970DD2DF65946 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cachingVideoTest/Pods-cachingVideoTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cachingVideoTest/Pods-cachingVideoTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cachingVideoTest/Pods-cachingVideoTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		62F58D432C3BC4E400E815D0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62C764DA2C3D198600FD7B33 /* Reachability.swift in Sources */,
+				62C764D22C3C231C00FD7B33 /* CachingPlayerItem.swift in Sources */,
 				62F58D4F2C3BC4E400E815D0 /* ViewController.swift in Sources */,
 				62F58D4B2C3BC4E400E815D0 /* AppDelegate.swift in Sources */,
+				62C764D02C3C20FE00FD7B33 /* CachedHLSClient.swift in Sources */,
 				62F58D4D2C3BC4E400E815D0 /* SceneDelegate.swift in Sources */,
+				62C765012C3E6A5900FD7B33 /* HLSParser.swift in Sources */,
+				62C764D82C3D18DD00FD7B33 /* CacheManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +307,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -266,7 +370,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -287,6 +391,7 @@
 		};
 		62F58D5C2C3BC4E500E815D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF99C968376EC50CA125950E /* Pods-cachingVideoTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -315,6 +420,7 @@
 		};
 		62F58D5D2C3BC4E500E815D0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 287C77AF73CDEE55A4CB6C59 /* Pods-cachingVideoTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
