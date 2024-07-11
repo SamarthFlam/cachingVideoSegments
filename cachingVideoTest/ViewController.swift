@@ -1,159 +1,165 @@
-import UIKit
-import AVKit
+//MARK: working code
 
-class ViewController: UIViewController, CachingPlayerItemDelegate, CachingPlayerItemStateDelegate {
+//import UIKit
+//import AVKit
+//
+//class ViewController: UIViewController, CachingPlayerItemDelegate, CachingPlayerItemStateDelegate {
+//
+//    var playerViewController: AVPlayerViewController!
+//    var player: AVPlayer!
+//    var cacheManager = CacheManager.shared
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        // Initialize AVPlayerViewController
+//        playerViewController = AVPlayerViewController()
+//        playerViewController.view.frame = view.bounds
+//        addChild(playerViewController)
+//        view.addSubview(playerViewController.view)
+//        
+//        // HLS URL (default)
+////        let baseURLString = "https://storage.googleapis.com/zingcam/flam/prod/streaming/Combo/hls/"
+//        let baseURLString = "https://zingcam.cdn.flamapp.com/flam/prod/streaming/samsung_prod/hls/"
+//        let initialURLString = "master.m3u8" // Default to master playlist
+//        
+//        guard let initialURL = URL(string: baseURLString + initialURLString) else {
+//            fatalError("Invalid initial URL")
+//        }
+//        
+//        // Initialize AVPlayer with initial URL
+////        let cachingPlayerItem = CachingPlayerItem(url: initialURL, resolution: "master")
+//        let cachingPlayerItem = CachingPlayerItem(url: initialURL)
+//        cachingPlayerItem.delegate = self
+//        cachingPlayerItem.stateDelegate = self
+//        
+//        player = AVPlayer(playerItem: cachingPlayerItem)
+//        playerViewController.player = player
+//        
+//        // Start playing automatically
+//        player.play()
+//        
+//        // Add resolution change buttons
+//        addResolutionButtons()
+//        
+//        // Initialize reachability
+//        cacheManager.startReachability()
+//    }
+//    
+//    func addResolutionButtons() {
+//        let buttonTitles = ["Auto", "1080p", "720p", "480p", "360p"]
+//        let buttonWidth = view.frame.width / CGFloat(buttonTitles.count)
+//        
+//        for (index, title) in buttonTitles.enumerated() {
+//            let button = UIButton(frame: CGRect(x: buttonWidth * CGFloat(index), y: view.frame.height - 100, width: buttonWidth, height: 50))
+//            button.backgroundColor = .darkGray
+//            button.setTitle(title, for: .normal)
+//            button.tag = index
+//            button.addTarget(self, action: #selector(changeResolution(_:)), for: .touchUpInside)
+//            view.addSubview(button)
+//        }
+//    }
+//    
+//    @objc func changeResolution(_ sender: UIButton) {
+////        let baseURLString = "https://storage.googleapis.com/zingcam/flam/prod/streaming/Combo/hls/"
+//        let baseURLString = "https://zingcam.cdn.flamapp.com/flam/prod/streaming/samsung_prod/hls/"
+//        
+//        var resolution: String
+//        var resolutionURLString: String
+//        
+//        switch sender.tag {
+//        case 0: // Auto (use the original master playlist)
+//            resolution = "master"
+//            resolutionURLString = "master_combo.m3u8"
+//        case 1: // 1080p
+//            resolution = "1080p"
+//            resolutionURLString = "1080p/stream.m3u8"
+//        case 2: // 720p
+//            resolution = "720p"
+//            resolutionURLString = "720p/stream.m3u8"
+//        case 3: // 480p
+//            resolution = "480p"
+//            resolutionURLString = "480p/stream.m3u8"
+//        case 4: // 360p
+//            resolution = "360p"
+//            resolutionURLString = "360p/stream.m3u8"
+//        default:
+//            return
+//        }
+//        
+//        guard let url = URL(string: baseURLString + resolutionURLString) else { return }
+//        
+//        // Check if the item is cached
+//        if let cachingPlayerItem = cacheManager.cacheItems[resolutionURLString] {
+//            // Use cached item
+//            player.replaceCurrentItem(with: cachingPlayerItem)
+//            
+//            print("Playing from cache for resolution: \(sender.titleLabel?.text ?? "Unknown")")
+//            
+//            // Start playing automatically
+//            player.play()
+//        } else {
+//            // Create new caching player item
+////            let cachingPlayerItem = CachingPlayerItem(url: url, resolution: resolution)
+//            let cachingPlayerItem = CachingPlayerItem(url: url)
+//            cachingPlayerItem.fetchAllSegments(from: url)
+//            cachingPlayerItem.delegate = self
+//            cachingPlayerItem.stateDelegate = self
+//            
+//            // Cache the item
+//            cacheManager.cacheItems[resolutionURLString] = cachingPlayerItem
+//            cachingPlayerItem.download()
+//            
+//            // Replace current AVPlayerItem with the new caching player item
+//            player.replaceCurrentItem(with: cachingPlayerItem)
+//            
+//            // Start playing automatically
+//            player.play()
+//        }
+//    }
+//    
+//    // CachingPlayerItemDelegate methods
+//    func playerItem(_ playerItem: CachingPlayerItem, didFinishDownloadingData data: Data) {
+//        print("File is downloaded and ready for storing")
+//        CacheManager.shared.storage?.async.setObject(data, forKey: playerItem.url.absoluteString, completion: { _ in })
+//        print("data: \(data)")
+//        print("player: \(playerItem.url.absoluteString)")
+//    }
+//    
+//    func playerItem(_ playerItem: CachingPlayerItem, didDownloadBytesSoFar bytesDownloaded: Int, outOf bytesExpected: Int) {
+//        print("\(bytesDownloaded)/\(bytesExpected)")
+//    }
+//    
+//    func playerItemPlaybackStalled(_ playerItem: CachingPlayerItem) {
+//        print("Playback stalled, buffering...")
+//    }
+//    
+//    func playerItem(_ playerItem: CachingPlayerItem, downloadingFailedWith error: Error) {
+//        print("Downloading failed: \(error.localizedDescription)")
+//        let newItem = AVPlayerItem(url: playerItem.url)
+//        player.replaceCurrentItem(with: newItem)
+//        player.play()
+//    }
+//    
+//    // CachingPlayerItemStateDelegate methods
+//    func playerItemStateChange(_ playerItem: CachingPlayerItem, changedTo state: CachingPlayerItemState) {
+//        switch state {
+//        case .playbackBufferEmpty:
+//            print("Buffering...")
+//        case .playbackLikelyToKeepUp:
+//            print("Playback likely to keep up")
+//        case .statusChanged:
+//            if playerItem.status == .readyToPlay {
+//                print("Ready to play")
+//                player.play()
+//            }
+//        case .none:
+//            break
+//        }
+//    }
+//}
 
-    var playerViewController: AVPlayerViewController!
-    var player: AVPlayer!
-    var cacheManager = CacheManager.shared
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Initialize AVPlayerViewController
-        playerViewController = AVPlayerViewController()
-        playerViewController.view.frame = view.bounds
-        addChild(playerViewController)
-        view.addSubview(playerViewController.view)
-        
-        // HLS URL (default)
-        let baseURLString = "https://storage.googleapis.com/zingcam/flam/prod/streaming/Combo/hls/"
-        let initialURLString = "master_combo.m3u8" // Default to master playlist
-        
-        guard let initialURL = URL(string: baseURLString + initialURLString) else {
-            fatalError("Invalid initial URL")
-        }
-        
-        // Initialize AVPlayer with initial URL
-//        let cachingPlayerItem = CachingPlayerItem(url: initialURL, resolution: "master")
-        let cachingPlayerItem = CachingPlayerItem(url: initialURL)
-        cachingPlayerItem.delegate = self
-        cachingPlayerItem.stateDelegate = self
-        
-        player = AVPlayer(playerItem: cachingPlayerItem)
-        playerViewController.player = player
-        
-        // Start playing automatically
-        player.play()
-        
-        // Add resolution change buttons
-        addResolutionButtons()
-        
-        // Initialize reachability
-        cacheManager.startReachability()
-    }
-    
-    func addResolutionButtons() {
-        let buttonTitles = ["Auto", "1080p", "720p", "480p", "360p"]
-        let buttonWidth = view.frame.width / CGFloat(buttonTitles.count)
-        
-        for (index, title) in buttonTitles.enumerated() {
-            let button = UIButton(frame: CGRect(x: buttonWidth * CGFloat(index), y: view.frame.height - 100, width: buttonWidth, height: 50))
-            button.backgroundColor = .darkGray
-            button.setTitle(title, for: .normal)
-            button.tag = index
-            button.addTarget(self, action: #selector(changeResolution(_:)), for: .touchUpInside)
-            view.addSubview(button)
-        }
-    }
-    
-    @objc func changeResolution(_ sender: UIButton) {
-        let baseURLString = "https://storage.googleapis.com/zingcam/flam/prod/streaming/Combo/hls/"
-        
-        var resolution: String
-        var resolutionURLString: String
-        
-        switch sender.tag {
-        case 0: // Auto (use the original master playlist)
-            resolution = "master_combo"
-            resolutionURLString = "master_combo.m3u8"
-        case 1: // 1080p
-            resolution = "1080p"
-            resolutionURLString = "1080p/stream.m3u8"
-        case 2: // 720p
-            resolution = "720p"
-            resolutionURLString = "720p/stream.m3u8"
-        case 3: // 480p
-            resolution = "480p"
-            resolutionURLString = "480p/stream.m3u8"
-        case 4: // 360p
-            resolution = "360p"
-            resolutionURLString = "360p/stream.m3u8"
-        default:
-            return
-        }
-        
-        guard let url = URL(string: baseURLString + resolutionURLString) else { return }
-        
-        // Check if the item is cached
-        if let cachingPlayerItem = cacheManager.cacheItems[resolutionURLString] {
-            // Use cached item
-            player.replaceCurrentItem(with: cachingPlayerItem)
-            
-            print("Playing from cache for resolution: \(sender.titleLabel?.text ?? "Unknown")")
-            
-            // Start playing automatically
-            player.play()
-        } else {
-            // Create new caching player item
-//            let cachingPlayerItem = CachingPlayerItem(url: url, resolution: resolution)
-            let cachingPlayerItem = CachingPlayerItem(url: url)
-            cachingPlayerItem.fetchAllSegments(from: url)
-            cachingPlayerItem.delegate = self
-            cachingPlayerItem.stateDelegate = self
-            
-            // Cache the item
-            cacheManager.cacheItems[resolutionURLString] = cachingPlayerItem
-            cachingPlayerItem.download()
-            
-            // Replace current AVPlayerItem with the new caching player item
-            player.replaceCurrentItem(with: cachingPlayerItem)
-            
-            // Start playing automatically
-            player.play()
-        }
-    }
-    
-    // CachingPlayerItemDelegate methods
-    func playerItem(_ playerItem: CachingPlayerItem, didFinishDownloadingData data: Data) {
-        print("File is downloaded and ready for storing")
-        CacheManager.shared.storage?.async.setObject(data, forKey: playerItem.url.absoluteString, completion: { _ in })
-        print("data: \(data)")
-        print("player: \(playerItem.url.absoluteString)")
-    }
-    
-    func playerItem(_ playerItem: CachingPlayerItem, didDownloadBytesSoFar bytesDownloaded: Int, outOf bytesExpected: Int) {
-        print("\(bytesDownloaded)/\(bytesExpected)")
-    }
-    
-    func playerItemPlaybackStalled(_ playerItem: CachingPlayerItem) {
-        print("Playback stalled, buffering...")
-    }
-    
-    func playerItem(_ playerItem: CachingPlayerItem, downloadingFailedWith error: Error) {
-        print("Downloading failed: \(error.localizedDescription)")
-        let newItem = AVPlayerItem(url: playerItem.url)
-        player.replaceCurrentItem(with: newItem)
-        player.play()
-    }
-    
-    // CachingPlayerItemStateDelegate methods
-    func playerItemStateChange(_ playerItem: CachingPlayerItem, changedTo state: CachingPlayerItemState) {
-        switch state {
-        case .playbackBufferEmpty:
-            print("Buffering...")
-        case .playbackLikelyToKeepUp:
-            print("Playback likely to keep up")
-        case .statusChanged:
-            if playerItem.status == .readyToPlay {
-                print("Ready to play")
-                player.play()
-            }
-        case .none:
-            break
-        }
-    }
-}
+//most working code
 
 
 
@@ -325,4 +331,204 @@ class ViewController: UIViewController, CachingPlayerItemDelegate, CachingPlayer
 //    
 //    // Other functions (fetchAndParsePlaylist, parseResolution, etc.) remain unchanged
 //}
+
+import UIKit
+import AVKit
+
+class ViewController: UIViewController, CachingPlayerItemDelegate, CachingPlayerItemStateDelegate {
+
+    var playerViewController: AVPlayerViewController!
+    var player: AVPlayer!
+    var cacheManager = CacheManager.shared
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Initialize AVPlayerViewController
+        playerViewController = AVPlayerViewController()
+        playerViewController.view.frame = view.bounds
+        addChild(playerViewController)
+        view.addSubview(playerViewController.view)
+        
+        // HLS URL (default)
+        let baseURLString = "https://storage.googleapis.com/zingcam/flam/prod/streaming/Combo/hls/"
+//        let baseURLString = "https://zingcam.cdn.flamapp.com/flam/prod/streaming/samsung_prod/hls/"
+        let initialURLString = "master_combo.m3u8" // Default to master playlist
+        
+        guard let initialURL = URL(string: baseURLString + initialURLString) else {
+            fatalError("Invalid initial URL")
+        }
+        
+        // Initialize AVPlayer with initial URL
+        let cachingPlayerItem = CachingPlayerItem(url: initialURL)
+        cachingPlayerItem.delegate = self
+        cachingPlayerItem.stateDelegate = self
+        
+        player = AVPlayer(playerItem: cachingPlayerItem)
+        playerViewController.player = player
+        
+        // Start playing automatically
+        player.play()
+        
+        // Add resolution change buttons
+        addResolutionButtons()
+        
+        // Initialize reachability
+        cacheManager.startReachability()
+        
+        // Add observer for player's status
+        player.addObserver(self, forKeyPath: "status", options: [.new, .old], context: nil)
+        player.addObserver(self, forKeyPath: "timeControlStatus", options: [.new, .old], context: nil)
+    }
+    
+    func addResolutionButtons() {
+        let buttonTitles = ["Auto", "1080p", "720p", "480p", "360p"]
+        let buttonWidth = view.frame.width / CGFloat(buttonTitles.count)
+        
+        for (index, title) in buttonTitles.enumerated() {
+            let button = UIButton(frame: CGRect(x: buttonWidth * CGFloat(index), y: view.frame.height - 100, width: buttonWidth, height: 50))
+            button.backgroundColor = .darkGray
+            button.setTitle(title, for: .normal)
+            button.tag = index
+            button.addTarget(self, action: #selector(changeResolution(_:)), for: .touchUpInside)
+            view.addSubview(button)
+        }
+    }
+    
+    @objc func changeResolution(_ sender: UIButton) {
+        let baseURLString = "https://storage.googleapis.com/zingcam/flam/prod/streaming/Combo/hls/"
+//        let baseURLString = "https://zingcam.cdn.flamapp.com/flam/prod/streaming/samsung_prod/hls/"
+        
+        var resolution: String
+        var resolutionURLString: String
+        
+        switch sender.tag {
+        case 0: // Auto (use the original master playlist)
+            resolution = "master"
+            resolutionURLString = "master_combo.m3u8"
+        case 1: // 1080p
+            resolution = "1080p"
+            resolutionURLString = "1080p/stream.m3u8"
+        case 2: // 720p
+            resolution = "720p"
+            resolutionURLString = "720p/stream.m3u8"
+        case 3: // 480p
+            resolution = "480p"
+            resolutionURLString = "480p/stream.m3u8"
+        case 4: // 360p
+            resolution = "360p"
+            resolutionURLString = "360p/stream.m3u8"
+        default:
+            return
+        }
+        
+        guard let url = URL(string: baseURLString + resolutionURLString) else { return }
+        
+        // Check if the item is cached
+        if let cachingPlayerItem = cacheManager.cacheItems[resolutionURLString] {
+            // Use cached item
+            player.replaceCurrentItem(with: cachingPlayerItem)
+            
+            print("Playing from cache for resolution: \(sender.titleLabel?.text ?? "Unknown")")
+            
+            // Start playing automatically
+            player.play()
+        } else {
+            // Create new caching player item
+            let cachingPlayerItem = CachingPlayerItem(url: url)
+            cachingPlayerItem.fetchAllSegments(from: url)
+            cachingPlayerItem.delegate = self
+            cachingPlayerItem.stateDelegate = self
+            
+            // Cache the item
+            cacheManager.cacheItems[resolutionURLString] = cachingPlayerItem
+            cachingPlayerItem.download()
+            
+            // Replace current AVPlayerItem with the new caching player item
+            player.replaceCurrentItem(with: cachingPlayerItem)
+            
+            // Start playing automatically
+            player.play()
+        }
+    }
+    
+    // CachingPlayerItemDelegate methods
+    func playerItem(_ playerItem: CachingPlayerItem, didFinishDownloadingData data: Data) {
+        print("File is downloaded and ready for storing")
+        CacheManager.shared.storage?.async.setObject(data, forKey: playerItem.url.absoluteString, completion: { _ in })
+        print("data: \(data)")
+        print("player: \(playerItem.url.absoluteString)")
+    }
+    
+    func playerItem(_ playerItem: CachingPlayerItem, didDownloadBytesSoFar bytesDownloaded: Int, outOf bytesExpected: Int) {
+        print("\(bytesDownloaded)/\(bytesExpected)")
+    }
+    
+    func playerItemPlaybackStalled(_ playerItem: CachingPlayerItem) {
+        print("Playback stalled, buffering...")
+        
+        // Check if the stalled segment is available in cache
+        do {
+            if let cachedData = try CacheManager.shared.storage?.object(forKey: playerItem.url.absoluteString) {
+                print("Using cached data")
+                let asset = AVURLAsset(url: playerItem.url)
+                let newItem = AVPlayerItem(asset: asset)
+                player.replaceCurrentItem(with: newItem)
+                player.play()
+            }
+        } catch {
+            print("Error retrieving cached data: \(error.localizedDescription)")
+        }
+    }
+    
+    func playerItem(_ playerItem: CachingPlayerItem, downloadingFailedWith error: Error) {
+        print("Downloading failed: \(error.localizedDescription)")
+        let newItem = AVPlayerItem(url: playerItem.url)
+        player.replaceCurrentItem(with: newItem)
+        player.play()
+    }
+    
+    // CachingPlayerItemStateDelegate methods
+    func playerItemStateChange(_ playerItem: CachingPlayerItem, changedTo state: CachingPlayerItemState) {
+        switch state {
+        case .playbackBufferEmpty:
+            print("Buffering...")
+        case .playbackLikelyToKeepUp:
+            print("Playback likely to keep up")
+        case .statusChanged:
+            if playerItem.status == .readyToPlay {
+                print("Ready to play")
+                player.play()
+            }
+        case .none:
+            break
+        }
+    }
+    
+    // Observe player status and time control status
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "status" {
+            if player.status == .readyToPlay {
+                print("Player status: ready to play")
+            } else if player.status == .failed {
+                print("Player status: failed")
+            }
+        } else if keyPath == "timeControlStatus" {
+            if player.timeControlStatus == .paused {
+                print("Player is paused")
+            } else if player.timeControlStatus == .waitingToPlayAtSpecifiedRate {
+                print("Player is waiting to play at specified rate")
+            } else if player.timeControlStatus == .playing {
+                print("Player is playing")
+            }
+        }
+    }
+    
+    deinit {
+        player.removeObserver(self, forKeyPath: "status")
+        player.removeObserver(self, forKeyPath: "timeControlStatus")
+    }
+}
+
+
 

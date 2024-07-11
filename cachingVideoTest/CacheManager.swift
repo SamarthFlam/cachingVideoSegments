@@ -18,7 +18,7 @@ public class CacheManager {
     
     public var hasInternet = false
     
-    public static var diskCacheSizeInMB: UInt = 250
+    public static var diskCacheSizeInMB: UInt = 500
     
     let diskConfig = DiskConfig(name: "Videos", expiry: .date(Date().addingTimeInterval(2 * 3600)), maxSize: CacheManager.diskCacheSizeInMB * 1024 * 1024, directory: nil, protectionType: nil)
     let memoryConfig = MemoryConfig(expiry: .never, countLimit: CacheManager.memoryCacheItemCount, totalCostLimit: CacheManager.memoryCacheItemCount)
