@@ -24,7 +24,7 @@ public class CacheManager {
     let memoryConfig = MemoryConfig(expiry: .never, countLimit: CacheManager.memoryCacheItemCount, totalCostLimit: CacheManager.memoryCacheItemCount)
     var storage: Storage<String, Data>?
     
-    public static var memoryCacheItemCount: UInt = 10
+    public static var memoryCacheItemCount: UInt = 100
     
     init() {
         do {
@@ -56,22 +56,23 @@ public class CacheManager {
         }
     }
     
-    func save(data: Data, for key: String) {
-        do {
-            try storage?.setObject(data, forKey: key)
-        } catch {
-            print("Error saving data to cache: \(error)")
-        }
-    }
-    
-    func cachedData(for key: String) -> Data? {
-        do {
-            return try storage?.object(forKey: key)
-        } catch {
-            print("Error retrieving data from cache: \(error)")
-            return nil
-        }
-    }
+//    func save(data: Data, for key: String) {
+//        do {
+//            print("save")
+//            try storage?.setObject(data, forKey: key)
+//        } catch {
+//            print("Error saving data to cache: \(error)")
+//        }
+//    }
+//    
+//    func cachedData(for key: String) -> Data? {
+//        do {
+//            return try storage?.object(forKey: key)
+//        } catch {
+//            print("Error retrieving data from cache: \(error)")
+//            return nil
+//        }
+//    }
 }
 
 
